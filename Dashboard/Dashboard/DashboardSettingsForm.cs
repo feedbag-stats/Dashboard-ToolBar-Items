@@ -52,9 +52,16 @@ namespace Dashboard
 
         }
 
+        // cancle button
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        // save button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

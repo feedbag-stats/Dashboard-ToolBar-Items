@@ -205,20 +205,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(633, 405);
+            this.button1.Location = new System.Drawing.Point(685, 405);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 18;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(552, 405);
+            this.button2.Location = new System.Drawing.Point(604, 405);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 19;
-            this.button2.Text = "Cancle";
+            this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
