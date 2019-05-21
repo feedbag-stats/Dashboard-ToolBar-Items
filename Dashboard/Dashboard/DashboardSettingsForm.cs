@@ -63,5 +63,68 @@ namespace Dashboard
         {
             
         }
+
+        // feedback only, generic interaction data
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool checkBox10checked = false;
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBox10checked)
+            {
+                this.checkBoxResearchGenericInteraction.Enabled = true;
+                this.checkBox2ResearchProjectSpecific.Enabled = true;
+                this.checkBoxResearchSourceCode.Enabled = true;
+                this.checkBoxOpenDataSourceCode.Enabled = true;
+                this.checkBoxOpenDataProjectSpecific.Enabled = true;
+                this.checkBoxOpenDataGenericInteraction.Enabled = true;
+                checkBox10checked = true;
+
+            }
+            else
+            {
+                this.checkBoxResearchGenericInteraction.Enabled = false;
+                this.checkBox2ResearchProjectSpecific.Enabled = false;
+                this.checkBoxResearchSourceCode.Enabled = false;
+                this.checkBoxOpenDataSourceCode.Enabled = false;
+                this.checkBoxOpenDataProjectSpecific.Enabled = false;
+                this.checkBoxOpenDataGenericInteraction.Enabled = false;
+                checkBox10checked = false;
+
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
