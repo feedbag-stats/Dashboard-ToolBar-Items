@@ -3,23 +3,59 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.Shell.TableControl;
+using Newtonsoft.Json.Linq;
 
 namespace Dashboard
 {
     public partial class DashboardSettingsForm : Form
     {
+        private readonly JArray myPrivacySettingArray;
+
         public DashboardSettingsForm()
         {
             InitializeComponent();
+            myPrivacySettingArray = new JArray();
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        // create and return a Json Object with the given content
+        public void AddPrivacyJson(string solutionName, bool enabledSettingsForSolution, 
+            bool researchGenericInteraction, bool researchProjectSpecific, bool researchSourceCode,
+            bool openDataGenericInteraction, bool openDataProjectSpecific, bool openDataSourceCode)
         {
+            dynamic privacySettingsJson = new JObject();
+            privacySettingsJson.Solution = solutionName;
+            privacySettingsJson.Enabled = enabledSettingsForSolution;
 
+            if (enabledSettingsForSolution)
+            {
+                privacySettingsJson.ResearchGenericInteraction = researchGenericInteraction;
+                privacySettingsJson.ResearchProjectSpecific = researchProjectSpecific;
+                privacySettingsJson.ResearchSourceCode = researchSourceCode;
+
+                privacySettingsJson.OpenDataGenericInteraction = openDataGenericInteraction;
+                privacySettingsJson.OpenDataProjectSpecific = openDataProjectSpecific;
+                privacySettingsJson.OpenDataSourceCode = openDataSourceCode;
+            }
+            else
+            {
+                privacySettingsJson.ResearchGenericInteraction = null;
+                privacySettingsJson.ResearchProjectSpecific = null;
+                privacySettingsJson.ResearchSourceCode = null;
+
+                privacySettingsJson.OpenDataGenericInteraction = null;
+                privacySettingsJson.OpenDataProjectSpecific = null;
+                privacySettingsJson.OpenDataSourceCode = null;
+            }
+
+            myPrivacySettingArray.Add(privacySettingsJson);
+            // test
+            Console.WriteLine(privacySettingsJson.ToString());
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -27,27 +63,7 @@ namespace Dashboard
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -61,7 +77,12 @@ namespace Dashboard
         // save button
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            AddPrivacyJson("Solution 1", this.myCheckBox10Checked, this.checkBoxResearchGenericInteraction.Checked,
+                this.checkBox2ResearchProjectSpecific.Checked, this.checkBoxResearchSourceCode.Checked,
+                this.checkBoxOpenDataGenericInteraction.Checked, this.checkBoxOpenDataProjectSpecific.Checked,
+                this.checkBoxOpenDataSourceCode.Checked);
+            this.Close();
+
         }
 
         // feedback only, generic interaction data
@@ -75,10 +96,10 @@ namespace Dashboard
 
         }
 
-        private bool checkBox10checked = false;
+        private bool myCheckBox10Checked = false;
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox10checked)
+            if (!myCheckBox10Checked)
             {
                 this.checkBoxResearchGenericInteraction.Enabled = true;
                 this.checkBox2ResearchProjectSpecific.Enabled = true;
@@ -86,7 +107,7 @@ namespace Dashboard
                 this.checkBoxOpenDataSourceCode.Enabled = true;
                 this.checkBoxOpenDataProjectSpecific.Enabled = true;
                 this.checkBoxOpenDataGenericInteraction.Enabled = true;
-                checkBox10checked = true;
+                myCheckBox10Checked = true;
 
             }
             else
@@ -97,17 +118,12 @@ namespace Dashboard
                 this.checkBoxOpenDataSourceCode.Enabled = false;
                 this.checkBoxOpenDataProjectSpecific.Enabled = false;
                 this.checkBoxOpenDataGenericInteraction.Enabled = false;
-                checkBox10checked = false;
+                myCheckBox10Checked = false;
 
             }
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -123,6 +139,11 @@ namespace Dashboard
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
