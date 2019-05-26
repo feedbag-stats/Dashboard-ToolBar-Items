@@ -47,7 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // checkBoxResearchGenericInteraction
@@ -81,6 +81,7 @@
             this.checkBoxResearchSourceCode.Size = new System.Drawing.Size(22, 21);
             this.checkBoxResearchSourceCode.TabIndex = 3;
             this.checkBoxResearchSourceCode.UseVisualStyleBackColor = true;
+            this.checkBoxResearchSourceCode.CheckedChanged += new System.EventHandler(this.checkBoxResearchSourceCode_CheckedChanged);
             // 
             // checkBoxFeedBagOnlySourceCode
             // 
@@ -130,6 +131,7 @@
             this.checkBoxOpenDataSourceCode.Size = new System.Drawing.Size(22, 21);
             this.checkBoxOpenDataSourceCode.TabIndex = 12;
             this.checkBoxOpenDataSourceCode.UseVisualStyleBackColor = true;
+            this.checkBoxOpenDataSourceCode.CheckedChanged += new System.EventHandler(this.checkBoxOpenDataSourceCode_CheckedChanged);
             // 
             // checkBoxOpenDataProjectSpecific
             // 
@@ -140,6 +142,7 @@
             this.checkBoxOpenDataProjectSpecific.Size = new System.Drawing.Size(22, 21);
             this.checkBoxOpenDataProjectSpecific.TabIndex = 11;
             this.checkBoxOpenDataProjectSpecific.UseVisualStyleBackColor = true;
+            this.checkBoxOpenDataProjectSpecific.CheckedChanged += new System.EventHandler(this.checkBoxOpenDataProjectSpecific_CheckedChanged);
             // 
             // checkBoxOpenDataGenericInteraction
             // 
@@ -150,6 +153,7 @@
             this.checkBoxOpenDataGenericInteraction.Size = new System.Drawing.Size(22, 21);
             this.checkBoxOpenDataGenericInteraction.TabIndex = 10;
             this.checkBoxOpenDataGenericInteraction.UseVisualStyleBackColor = true;
+            this.checkBoxOpenDataGenericInteraction.CheckedChanged += new System.EventHandler(this.checkBoxOpenDataGenericInteraction_CheckedChanged);
             // 
             // checkBox10
             // 
@@ -249,20 +253,21 @@
             this.label7.Text = "Data Collection Settings for";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // listBox1
+            // comboBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 37;
-            this.listBox1.Items.AddRange(new object[] {
-            "Solution1",
-            "Solution2",
-            "Solution3"});
-            this.listBox1.Location = new System.Drawing.Point(432, 44);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(287, 41);
-            this.listBox1.TabIndex = 27;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.comboBox1.AllowDrop = true;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Solution 1 ",
+            "Solution 2",
+            "Solution 3"});
+            this.comboBox1.Location = new System.Drawing.Point(432, 41);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(345, 45);
+            this.comboBox1.TabIndex = 28;
+            this.comboBox1.Text = "Solution";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // DashboardSettingsForm
             // 
@@ -272,7 +277,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -319,6 +324,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
