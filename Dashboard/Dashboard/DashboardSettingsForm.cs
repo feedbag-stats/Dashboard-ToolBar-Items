@@ -18,7 +18,7 @@ namespace Dashboard
     public partial class DashboardSettingsForm : Form
     {
         readonly dynamic myPrivacySettingJson = new JObject();
-        private readonly object mySolutions;
+        private readonly ComboBox.ObjectCollection mySolutions;
         private string myCurrentSolutionId = "0";
 
         public DashboardSettingsForm()
@@ -26,9 +26,12 @@ namespace Dashboard
             InitializeComponent();
             mySolutions = this.comboBox1.Items;
 
+            // change combobox text to name of first solution
+            this.comboBox1.Text = mySolutions[0].ToString();
+            
             int id = 0;
             //initialize privacy settings JObject
-            foreach (object solution in (IEnumerable) mySolutions)
+            foreach (object solution in mySolutions)
             {
                 dynamic privacySettings = new JObject();
                 privacySettings.Solution = solution.ToString();
@@ -46,10 +49,7 @@ namespace Dashboard
                 privacySettings.OpenDataProjectSpecific = false;
                 privacySettings.OpenDataSourceCode = false;
 
-                //TODO FIXME: add id as entry befor editing it.
-                //myPrivacySettingJson.0 = null;
                 myPrivacySettingJson.Add(id.ToString(), privacySettings);
-                //myPrivacySettingJson[id] = privacySettings;
                 id++;
 
             }   
@@ -228,32 +228,37 @@ namespace Dashboard
         private void loadSettingsForSolution(string solutionSettingsId)
         {
             JObject selectedSettings = myPrivacySettingJson[solutionSettingsId];
-
-            this.checkBox10.Checked = (bool) selectedSettings["Enabled"];
-            if (this.checkBox10.Checked)
+            try
             {
-                this.checkBoxResearchGenericInteraction.Enabled = true;
-                this.checkBox2ResearchProjectSpecific.Enabled = true; 
-                this.checkBoxResearchSourceCode.Enabled = true;
-                this.checkBoxOpenDataSourceCode.Enabled = true;
-                this.checkBoxOpenDataProjectSpecific.Enabled = true;
-                this.checkBoxOpenDataGenericInteraction.Enabled = true;
+                this.checkBox10.Checked = (bool)selectedSettings["Enabled"];
+                if (this.checkBox10.Checked)
+                {
+                    this.checkBoxResearchGenericInteraction.Enabled = true;
+                    this.checkBox2ResearchProjectSpecific.Enabled = true;
+                    this.checkBoxResearchSourceCode.Enabled = true;
+                    this.checkBoxOpenDataSourceCode.Enabled = true;
+                    this.checkBoxOpenDataProjectSpecific.Enabled = true;
+                    this.checkBoxOpenDataGenericInteraction.Enabled = true;
+                }
+                else
+                {
+                    this.checkBoxResearchGenericInteraction.Enabled = false;
+                    this.checkBox2ResearchProjectSpecific.Enabled = false;
+                    this.checkBoxResearchSourceCode.Enabled = false;
+                    this.checkBoxOpenDataSourceCode.Enabled = false;
+                    this.checkBoxOpenDataProjectSpecific.Enabled = false;
+                    this.checkBoxOpenDataGenericInteraction.Enabled = false;
+                }
+                this.checkBoxResearchGenericInteraction.Checked = (bool)selectedSettings["ResearchGenericInteraction"];
+                this.checkBox2ResearchProjectSpecific.Checked = (bool)selectedSettings["ResearchProjectSpecific"];
+                this.checkBoxResearchSourceCode.Checked = (bool)selectedSettings["ResearchSourceCode"];
+                this.checkBoxOpenDataSourceCode.Checked = (bool)selectedSettings["OpenDataSourceCode"];
+                this.checkBoxOpenDataProjectSpecific.Checked = (bool)selectedSettings["OpenDataProjectSpecific"];
+                this.checkBoxOpenDataGenericInteraction.Checked = (bool)selectedSettings["OpenDataGenericInteraction"];
             }
-            else
-            {
-                this.checkBoxResearchGenericInteraction.Enabled = false;
-                this.checkBox2ResearchProjectSpecific.Enabled = false;
-                this.checkBoxResearchSourceCode.Enabled = false;
-                this.checkBoxOpenDataSourceCode.Enabled = false;
-                this.checkBoxOpenDataProjectSpecific.Enabled = false;
-                this.checkBoxOpenDataGenericInteraction.Enabled = false;
-            }
-            this.checkBoxResearchGenericInteraction.Checked = (bool) selectedSettings["ResearchGenericInteraction"];
-            this.checkBox2ResearchProjectSpecific.Checked = (bool)selectedSettings["ResearchProjectSpecific"]; 
-            this.checkBoxResearchSourceCode.Checked = (bool)selectedSettings["ResearchSourceCode"]; 
-            this.checkBoxOpenDataSourceCode.Checked = (bool)selectedSettings["OpenDataSourceCode"]; 
-            this.checkBoxOpenDataProjectSpecific.Checked = (bool)selectedSettings["OpenDataProjectSpecific"]; 
-            this.checkBoxOpenDataGenericInteraction.Checked = (bool)selectedSettings["OpenDataGenericInteraction"]; 
+            catch (NullReferenceException e)
+            {}
+           
         }
 
         private void checkBoxResearchSourceCode_CheckedChanged(object sender, EventArgs e)
