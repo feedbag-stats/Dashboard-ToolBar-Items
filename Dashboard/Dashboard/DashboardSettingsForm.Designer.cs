@@ -48,6 +48,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SaveDefaultSettingsButton = new System.Windows.Forms.Button();
+            this.LoadDefaultSettingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBoxResearchGenericInteraction
@@ -261,13 +263,34 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Solution 1 ",
             "Solution 2",
-            "Solution 3"});
+            "Solution 3",
+            "Solution 4"});
             this.comboBox1.Location = new System.Drawing.Point(432, 41);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(345, 45);
             this.comboBox1.TabIndex = 28;
             this.comboBox1.Text = "Solution";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // SaveDefaultSettingsButton
+            // 
+            this.SaveDefaultSettingsButton.Location = new System.Drawing.Point(215, 405);
+            this.SaveDefaultSettingsButton.Name = "SaveDefaultSettingsButton";
+            this.SaveDefaultSettingsButton.Size = new System.Drawing.Size(177, 33);
+            this.SaveDefaultSettingsButton.TabIndex = 30;
+            this.SaveDefaultSettingsButton.Text = "Save Default Settings";
+            this.SaveDefaultSettingsButton.UseVisualStyleBackColor = true;
+            this.SaveDefaultSettingsButton.Click += new System.EventHandler(this.SaveDefaultSettingsButton_Click);
+            // 
+            // LoadDefaultSettingsButton
+            // 
+            this.LoadDefaultSettingsButton.Location = new System.Drawing.Point(28, 405);
+            this.LoadDefaultSettingsButton.Name = "LoadDefaultSettingsButton";
+            this.LoadDefaultSettingsButton.Size = new System.Drawing.Size(181, 33);
+            this.LoadDefaultSettingsButton.TabIndex = 31;
+            this.LoadDefaultSettingsButton.Text = "Load Default Settings";
+            this.LoadDefaultSettingsButton.UseVisualStyleBackColor = true;
+            this.LoadDefaultSettingsButton.Click += new System.EventHandler(this.LoadDefaultSettingsButton_Click);
             // 
             // DashboardSettingsForm
             // 
@@ -277,6 +300,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LoadDefaultSettingsButton);
+            this.Controls.Add(this.SaveDefaultSettingsButton);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -325,5 +350,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button SaveDefaultSettingsButton;
+        private System.Windows.Forms.Button LoadDefaultSettingsButton;
     }
 }
