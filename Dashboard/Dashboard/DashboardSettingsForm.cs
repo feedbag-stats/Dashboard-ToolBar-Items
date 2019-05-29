@@ -182,11 +182,23 @@ namespace Dashboard
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
            _myPrivacySettingJson[_myCurrentSolutionId]["ResearchGenericInteraction"] = this.checkBoxResearchGenericInteraction.Checked;
+            // if you uncheck open data, you automatically uncheck research 
+            if (!this.checkBoxResearchGenericInteraction.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["OpenDatahGenericInteraction"] = this.checkBoxResearchGenericInteraction.Checked;
+                this.checkBoxOpenDataGenericInteraction.Checked = false;
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             _myPrivacySettingJson[_myCurrentSolutionId]["ResearchProjectSpecific"] = this.checkBox2ResearchProjectSpecific.Checked;
+            // if you uncheck open data, you automatically uncheck research 
+            if (!this.checkBox2ResearchProjectSpecific.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["OpenDataProjectSpecific"] = this.checkBox2ResearchProjectSpecific.Checked;
+                this.checkBoxOpenDataProjectSpecific.Checked = false;
+            }
         }
 
         // cancle button
@@ -295,21 +307,49 @@ namespace Dashboard
         private void checkBoxResearchSourceCode_CheckedChanged(object sender, EventArgs e)
         {
             _myPrivacySettingJson[_myCurrentSolutionId]["ResearchSourceCode"] = this.checkBoxResearchSourceCode.Checked;
+            // if you uncheck open data, you automatically uncheck research 
+            if (!this.checkBoxResearchSourceCode.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["OpenDataSourceCode"] = this.checkBoxResearchSourceCode.Checked;
+                this.checkBoxOpenDataSourceCode.Checked = false;
+            }
         }
 
         private void checkBoxOpenDataGenericInteraction_CheckedChanged(object sender, EventArgs e)
         {
             _myPrivacySettingJson[_myCurrentSolutionId]["OpenDataGenericInteraction"] = this.checkBoxOpenDataGenericInteraction.Checked;
+            // if you check open data, you automatically check research    
+            if (this.checkBoxOpenDataGenericInteraction.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["ResearchGenericInteraction"] = this.checkBoxOpenDataGenericInteraction.Checked;
+                this.checkBoxResearchGenericInteraction.Checked = true;
+            }
+
         }
 
         private void checkBoxOpenDataProjectSpecific_CheckedChanged(object sender, EventArgs e)
         {
             _myPrivacySettingJson[_myCurrentSolutionId]["OpenDataProjectSpecific"] = this.checkBoxOpenDataProjectSpecific.Checked;
+            // if you check open data, you automatically check research    
+            if (this.checkBoxOpenDataProjectSpecific.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["ResearchProjectSpecific"] = this.checkBoxOpenDataProjectSpecific.Checked;
+                this.checkBox2ResearchProjectSpecific.Checked = true;
+            }
+            
         }
 
         private void checkBoxOpenDataSourceCode_CheckedChanged(object sender, EventArgs e)
         {
             _myPrivacySettingJson[_myCurrentSolutionId]["OpenDataSourceCode"] = this.checkBoxOpenDataSourceCode.Checked;
+            // if you check open data, you automatically check research    
+            if (this.checkBoxOpenDataSourceCode.Checked)
+            {
+                _myPrivacySettingJson[_myCurrentSolutionId]["ResearchSourceCode"] = this.checkBoxOpenDataSourceCode.Checked;
+                this.checkBoxResearchSourceCode.Checked = true;
+
+            }
+
         }
 
        
@@ -322,6 +362,11 @@ namespace Dashboard
         private void LoadDefaultSettingsButton_Click(object sender, EventArgs e)
         {
             LoadDefaultSettingsForCurrentSolution();
+        }
+
+        private void DashboardSettingsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

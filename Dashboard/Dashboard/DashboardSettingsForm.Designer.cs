@@ -324,6 +324,7 @@
             this.Controls.Add(this.checkBoxResearchGenericInteraction);
             this.Name = "DashboardSettingsForm";
             this.Text = "Dashboard Privacy Settings";
+            this.Load += new System.EventHandler(this.DashboardSettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
