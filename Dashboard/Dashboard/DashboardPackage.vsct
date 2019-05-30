@@ -44,6 +44,10 @@
         <!--<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />-->
         <Parent guid="guidDashboardPackageCmdSet" id="TopLevelMenu" />
       </Group>
+      <Group guid="guidDashboardPackageCmdSet2" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidDashboardPackageCmdSet" id="TopLevelMenu" />
+        <!--<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />-->
+      </Group>
     </Groups>
 
     <!--Buttons section. -->
@@ -72,6 +76,13 @@
           <ButtonText>Dashboard Settings</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidDashboardPackageCmdSet2" id="cmdidFeedBagEventManagerCommand" priority="0x0100" type="Button">
+        <Parent guid="guidDashboardPackageCmdSet2" id="MyMenuGroup" />
+        <Icon guid="guidImages2" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Event Manager</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -83,6 +94,7 @@
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
       <Bitmap guid="guidImages" href="Resources\OpenDashboardCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages1" href="Resources\DashboardSettingsCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages2" href="Resources\FeedBagEventManagerCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
 
     <Menus>
@@ -123,6 +135,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{848f2c2d-9fd9-43a1-845c-da02a22f5d04}" name="guidImages1">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{ff4d1a65-0cbe-4cfe-b43e-89e5d4ca62a9}" name="guidDashboardPackageCmdSet2">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidFeedBagEventManagerCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{d2fe0b52-7638-4b13-9c65-631701cd49b3}" name="guidImages2">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

@@ -71,6 +71,7 @@ namespace Dashboard
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await OpenDashboardCommand.InitializeAsync(this);
             await DashboardSettingsCommand.InitializeAsync(this);
+            await FeedBagEventManagerCommand.InitializeAsync(this);
         }
 
         #endregion
