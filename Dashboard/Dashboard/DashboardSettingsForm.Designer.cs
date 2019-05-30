@@ -1,5 +1,19 @@
-﻿namespace Dashboard
+﻿using System.Collections;
+using JetBrains.IDE.SolutionBuilders;
+
+namespace Dashboard
 {
+    using System.Linq;
+    using EnvDTE;
+    using JetBrains.Application;
+    using JetBrains.Application.Threading;
+    using KaVE.Commons.Model.Events.VisualStudio;
+    using KaVE.Commons.Model.Naming.IDEComponents;
+    using KaVE.Commons.Utils;
+    using KaVE.VS.Commons;
+    using KaVE.VS.Commons.Generators;
+    using KaVE.VS.Commons.Naming;
+
     partial class DashboardSettingsForm
     {
         /// <summary>
@@ -257,9 +271,20 @@
             // 
             // comboBox1
             // 
+            /*var solutions = envDTE.DTE.Solution.GetName();*/
+            //var solutionEvents = DTE.Events.SolutionEvents;
+            /*JetBrains.ProjectModel.SolutionsManager solutionMangager = new JetBrains.ProjectModel.SolutionsManager(null);
+            JetBrains.DataFlow.IViewable<JetBrains.ProjectModel.ISolution> solutions = solutionMangager.Solutions;
+            foreach (var solution in (IEnumerable) solutions)
+            {
+                this.comboBox1.Items.AddRange(new object[] {solution.ToString()});
+            }*/
+
             this.comboBox1.AllowDrop = true;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
+            //this.comboBox1.Items.AddRange(new object[] {solutions});
+        
             this.comboBox1.Items.AddRange(new object[] {
             "Solution 1 ",
             "Solution 2",
